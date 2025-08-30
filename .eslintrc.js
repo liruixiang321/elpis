@@ -35,9 +35,7 @@ module.exports = {
     'vue/no-v-html': 'warn',
     indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
     semi: ['error', 'always'],
-    'comma-dangle': ['error', 'always-multiline'],
     'object-curly-spacing': ['error', 'always'],
     'array-bracket-spacing': ['error', 'never'],
     'space-before-function-paren': [
