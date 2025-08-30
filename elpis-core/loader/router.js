@@ -11,13 +11,11 @@ const KoaRouter = require("koa-router");
 module.exports = (app) => {
   const router = new KoaRouter();
   const routerPath = path.resolve(app.businessPath, `.${path.sep}router`);
-  const fileList = glob.sync(
-    path.resolve(routerPath, `.${path.sep}**.${path.sep}*js`)
-  );
+  const fileList = glob.sync(path.resolve(routerPath, `.${path.sep}*js`));
   fileList.forEach((file) => {
     require(path.resolve(file))(app, router);
   });
-
+  console.log(fileList, "<-- fileList");
   //路由兜底
   router.all("*", async (ctx) => {
     ctx.status = 302;

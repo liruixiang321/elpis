@@ -44,6 +44,7 @@ module.exports = (app) => {
       }
     }
   });
+  console.log(app, controller, "controller");
   app.controller = controller;
   return controller;
 };

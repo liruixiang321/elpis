@@ -16,12 +16,10 @@ const path = require("path");
     */
 module.exports = (app) => {
   //读取middleware目录下的所有文件
-  console.log(app.businessPath);
   const middlewarePath = path.resolve(
     app.businessPath,
     `.${path.sep}middleware`
   );
-  console.log(middlewarePath);
   const fileList = glob.sync(
     path.resolve(middlewarePath, `.${path.sep}**${path.sep}*.js`)
   );
@@ -46,6 +44,5 @@ module.exports = (app) => {
       }
     }
   });
-  console.log(middlewares);
   app.middlewares = middlewares;
 };
