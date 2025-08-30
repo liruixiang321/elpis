@@ -33,8 +33,8 @@ module.exports = (app) => {
       .replace(/\.js$/, "")
       .replace(/[-/](.)/g, (match, char) => char.toUpperCase());
     const names = modulePath.split(path.sep);
-    let tempMiddleware = middleware;
-    for (let i = 0; i < names.length - 1; i++) {
+    let tempMiddleware = middlewares;
+    for (let i = 0; i <= names.length - 1; i++) {
       const name = names[i];
       if (i == names.length - 1) {
         tempMiddleware[name] = require(path.resolve(file))(app);

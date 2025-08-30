@@ -28,7 +28,7 @@ module.exports = (app) => {
       .replace(/[-/](.)/g, (match, char) => char.toUpperCase());
     const names = modulePath.split(path.sep);
     let tempService = service;
-    for (let i = 0; i < names.length - 1; i++) {
+    for (let i = 0; i <= names.length - 1; i++) {
       const name = names[i];
       if (i == names.length - 1) {
         tempService[name] = require(path.resolve(file))(app);
