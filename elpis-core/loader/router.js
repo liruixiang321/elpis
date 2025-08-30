@@ -12,7 +12,7 @@ module.exports = (app) => {
   const router = new KoaRouter();
   const routerPath = path.resolve(app.businessPath, `.${path.sep}router`);
   const fileList = glob.sync(
-    path.resolve(routerPath, `.${path.sep}**.${path.sep}**js`)
+    path.resolve(routerPath, `.${path.sep}**.${path.sep}*js`)
   );
   fileList.forEach((file) => {
     require(path.resolve(file))(app, router);

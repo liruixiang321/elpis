@@ -21,7 +21,7 @@ module.exports = (app) => {
     `.${path.sep}router-schema`
   );
   const fileList = glob.sync(
-    path.resolve(routerSchemaPath, `.${path.sep}**.js`)
+    path.resolve(routerSchemaPath, `.${path.sep}*.js`)
   );
   fileList.forEach((file) => {
     const name = path.relative(routerSchemaPath, file);

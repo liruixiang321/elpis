@@ -15,7 +15,7 @@ const path = require("path");
 module.exports = (app) => {
   // Extend Koa context
   let extendPath = path.resolve(app.businessPath, `.${path.sep}extend`);
-  let fileList = glob.sync(path.resolve(extendPath, `.${path.sep}**.js`));
+  let fileList = glob.sync(path.resolve(extendPath, `.${path.sep}*.js`));
   fileList.forEach((file) => {
     let name = path.resolve(file);
     name

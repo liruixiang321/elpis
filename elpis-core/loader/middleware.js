@@ -23,7 +23,7 @@ module.exports = (app) => {
   );
   console.log(middlewarePath);
   const fileList = glob.sync(
-    path.resolve(middlewarePath, `.${path.sep}**${path.sep}**.js`)
+    path.resolve(middlewarePath, `.${path.sep}**${path.sep}*.js`)
   );
   console.log(fileList);
   const middlewares = {};
