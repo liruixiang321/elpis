@@ -8,6 +8,7 @@ const controller = require("./loader/controller");
 const config = require("./loader/config");
 const extend = require("./loader/extend");
 const router = require("./loader/router");
+const service = require("./loader/service");
 module.exports = {
   // Your module exports here
   start(options = {}) {
@@ -30,6 +31,8 @@ module.exports = {
     console.log("___controller loaded___");
     config(app);
     console.log("___config loaded___");
+    service(app);
+    console.log("___service loaded___");
     extend(app);
     console.log("___extend loaded___");
     //全局中间件 app/middleware.js

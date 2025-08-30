@@ -17,9 +17,7 @@ const path = require("path");
 module.exports = (app) => {
   //读取service目录下的所有文件
   const servicePath = path.resolve(app.businessPath, `.${path.sep}service`);
-  const fileList = glob.sync(
-    path.resolve(servicePath, `${path.sep}**${path.sep}*.js`)
-  );
+  const fileList = glob.sync(path.resolve(servicePath, `.${path.sep}*.js`));
   const service = {};
   fileList.forEach((file) => {
     const moduleName = path.relative(servicePath, file);
@@ -31,7 +29,8 @@ module.exports = (app) => {
     for (let i = 0; i <= names.length - 1; i++) {
       const name = names[i];
       if (i == names.length - 1) {
-        tempService[name] = require(path.resolve(file))(app);
+        let serviceClass = require(path.resolve(file))(app);
+        tempService[name] = new serviceClass();
       } else {
         if (!tempService[name]) {
           tempService[name] = {};
@@ -40,5 +39,6 @@ module.exports = (app) => {
       }
     }
   });
+  console.log(service, "service");
   app.service = service;
 };
