@@ -15,7 +15,7 @@
 const path = require("path");
 
 module.exports = (app) => {
-  const configPath = path.resolve(app.businessPath, `.${path.sep}config`);
+  const configPath = path.resolve(app.baseDir, `.${path.sep}config`);
 
   let defaultConfig = {};
   defaultConfig = require(path.resolve(

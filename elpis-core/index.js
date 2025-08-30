@@ -17,9 +17,8 @@ module.exports = {
     // 应用的根目录
     app.baseDir = process.cwd();
 
-    app.businessPath = path.resolve(app.baseDir, `${sep}app`);
+    app.businessPath = path.resolve(app.baseDir, `.${sep}app`);
     //环境
-
     app.env = env();
     console.log("当前环境", app.env.get());
 
@@ -29,7 +28,7 @@ module.exports = {
     console.log("___router schema loaded___");
     controller(app);
     console.log("___controller loaded___");
-    // config(app);
+    config(app);
     console.log("___config loaded___");
     extend(app);
     console.log("___extend loaded___");
@@ -39,14 +38,14 @@ module.exports = {
       require(path.resolve(app.businessPath, `.${path.sep}middleware.js`))(app);
       console.log("___global middleware loaded___");
     } catch (error) {
-      console.error("Error loading middleware:", error);
+      console.error("Error global loading middleware:", error);
     }
 
     router(app);
     console.log("___router loaded___");
     console.log(app);
     try {
-      const port = process.env.PORT || 3000;
+      const port = process.env.PORT || 8080;
       const host = process.env.HOST || "0.0.0.0";
       app.listen(port, host, () => {
         console.log(`Server is running on http://${host}:${port}`);
