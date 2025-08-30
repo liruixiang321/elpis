@@ -24,6 +24,6 @@ module.exports = (app) => {
     ctx.redirect(app.options.homePage);
   });
 
-  app.use(router.routes);
+  app.use(router.routes());
   app.use(router.allowedMethods());
 };
