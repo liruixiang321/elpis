@@ -22,15 +22,15 @@ module.exports = {
     //环境
     app.env = env();
     console.log("当前环境", app.env.get());
-
+    config(app);
+    console.log("___config loaded___");
     middlewareLoader(app);
     console.log("___middlewareloader loaded___");
     routerSchema(app);
     console.log("___router schema loaded___");
     controller(app);
     console.log("___controller loaded___");
-    config(app);
-    console.log("___config loaded___");
+
     service(app);
     console.log("___service loaded___");
     extend(app);

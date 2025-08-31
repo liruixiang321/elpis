@@ -21,13 +21,14 @@ module.exports = (app) => {
     `.${path.sep}router-schema`
   );
   const fileList = glob.sync(
-    path.resolve(routerSchemaPath, `.${path.sep}*.js`)
+    path.resolve(routerSchemaPath, `.${path.sep}**.js`)
   );
+  let routerSchema = {};
   fileList.forEach((file) => {
-    const name = path.relative(routerSchemaPath, file);
-    app.routerSchema = {
-      ...app.routerSchema,
-      [name]: require(path.resolve(file))(app),
+    routerSchema = {
+      ...routerSchema,
+      ...require(path.resolve(file)),
     };
   });
+  app.routerSchema = routerSchema;
 };

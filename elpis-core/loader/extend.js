@@ -17,8 +17,8 @@ module.exports = (app) => {
   let extendPath = path.resolve(app.businessPath, `.${path.sep}extend`);
   let fileList = glob.sync(path.resolve(extendPath, `.${path.sep}*.js`));
   fileList.forEach((file) => {
-    let name = path.resolve(file);
-    name
+    let name = path.relative(extendPath, file);
+    name = name
       .replace(/\.js$/, "")
       .replace(/[-_](.)/g, (match, char) => char.toUpperCase());
 
@@ -27,6 +27,10 @@ module.exports = (app) => {
         throw new Error(`扩展名 ${name} 已存在，请更换`);
       }
     }
-    app[name] = require(path.resolve(file))(app);
+    try {
+      app[name] = require(path.resolve(file))(app);
+    } catch (error) {
+      console.error("加载扩展名失败", name, file, error);
+    }
   });
 };

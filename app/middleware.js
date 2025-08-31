@@ -16,4 +16,15 @@ module.exports = (app) => {
       },
     })
   );
+  //引入ctx.body解析中间件
+  const bodyParser = require("koa-bodyparser");
+  app.use(
+    bodyParser({
+      formLimit: "1000mb",
+      enableTypes: ["json", "form", "text"],
+    })
+  );
+  app.use(app.middlewares.errorHandle);
+
+  app.use(app.middlewares.apiParamsVerify);
 };

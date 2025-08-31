@@ -1,5 +1,6 @@
 module.exports = (app) => {
-  return class ProjectService {
+  const BaseService = require("./base")(app);
+  return class ProjectService extends BaseService {
     async getProjectList() {
       // Simulate a database call
       return [

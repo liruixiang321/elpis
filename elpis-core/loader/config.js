@@ -34,7 +34,7 @@ module.exports = (app) => {
     } else if (app.env.isBeta()) {
       envConfig = require(path.resolve(
         configPath,
-        `.${path.sep}config.test.js`
+        `.${path.sep}config.beta.js`
       ));
     } else if (app.env.isProduction()) {
       envConfig = require(path.resolve(
@@ -47,4 +47,5 @@ module.exports = (app) => {
   }
 
   app.config = { ...app.config, ...envConfig };
+  console.log("App Config:", app.config);
 };
